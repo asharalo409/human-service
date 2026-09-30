@@ -1,9 +1,9 @@
 import { createClient } from '@supabase/supabase-js';
 import type { FoundationSettings, Notice, Project } from '../types';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string | undefined;
-const supabaseAnonKey = import.meta.env
-  .VITE_SUPABASE_ANON_KEY as string | undefined;
+const env = (import.meta as any).env || {};
+const supabaseUrl = (env.VITE_SUPABASE_URL as string) || '';
+const supabaseAnonKey = (env.VITE_SUPABASE_ANON_KEY as string) || '';
 
 export const isSupabaseConfigured = Boolean(
   supabaseUrl &&
